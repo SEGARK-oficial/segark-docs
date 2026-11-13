@@ -1,0 +1,37 @@
+:root {
+  --ifm-color-primary: #1f6f5c;
+  --ifm-color-primary-dark: #1c6453;
+  --ifm-color-primary-darker: #1a5e4e;
+  --ifm-color-primary-darkest: #154d40;
+  --ifm-color-primary-light: #227a65;
+  --ifm-color-primary-lighter: #24806a;
+  --ifm-color-primary-lightest: #29917a;
+  --ifm-code-font-size: 95%;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #4fc3a1;
+  --ifm-color-primary-dark: #3db994;
+  --ifm-color-primary-darker: #3aaf8c;
+  --ifm-color-primary-darkest: #308f73;
+  --ifm-color-primary-light: #66cbad;
+  --ifm-color-primary-lighter: #71cfb3;
+  --ifm-color-primary-lightest: #93dbc6;
+}
+
+.product-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  margin: 2rem 0;
+}
+
+.product-card {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.product-card h2 { margin-bottom: 0.25rem; }
+.product-card p { color: var(--ifm-color-emphasis-700); }
+.product-card ul { padding-left: 1.1rem; margin-bottom: 0; }

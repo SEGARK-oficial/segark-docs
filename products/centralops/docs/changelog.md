@@ -1,0 +1,402 @@
+---
+title: Histórico de atualizações
+sidebar_position: 99
+description: O que mudou em cada versão do SEGARK Pipeline e do motor CentralOps.
+---
+
+# Histórico de atualizações
+
+Gerado das [notas de versão no GitHub](https://github.com/SEGARK-oficial/CentralOps/releases). Mudanças incompatíveis só aparecem em versões maiores e vêm marcadas com ⚠️.
+
+## 2.x
+
+### v2.18.0 · 2026-11-11
+
+#### Novidades
+
+* **aws:** integração AWS — papel cross-account, WAF e CloudTrail de Organization, achados Security Hub/GuardDuty e modo Organization ([#121](https://github.com/SEGARK-oficial/CentralOps/issues/121)) ([bd6b590](https://github.com/SEGARK-oficial/CentralOps/commit/bd6b590f9df5666832723f19a15e32d238873891))
+* **aws:** recebimento via Firehose + docs de acesso e permissões mínimas ([#127](https://github.com/SEGARK-oficial/CentralOps/issues/127)) ([7bcfd5a](https://github.com/SEGARK-oficial/CentralOps/commit/7bcfd5a035c72d449a27e0070f8414dceac67a18))
+* **dataplane:** ingestão push no log — raw, HEC e OTLP (ADR-0018 Onda 2) ([#116](https://github.com/SEGARK-oficial/CentralOps/issues/116)) ([518dd7e](https://github.com/SEGARK-oficial/CentralOps/commit/518dd7e44c158a21e61db0368570982fc3a506f8))
+* **dataplane:** log de ponta a ponta — coleta só coleta, store-and-forward e limpeza (ADR-0018 Ondas 3–5) ([#118](https://github.com/SEGARK-oficial/CentralOps/issues/118)) ([4ce5231](https://github.com/SEGARK-oficial/CentralOps/commit/4ce52310521aa2cc48a23012403a2df9a7182869))
+* **helm:** PgBouncer opcional e PrometheusRule do data-plane (ADR-0018 Onda 1) ([#114](https://github.com/SEGARK-oficial/CentralOps/issues/114)) ([eb878e6](https://github.com/SEGARK-oficial/CentralOps/commit/eb878e6d8fc4a7b02f55002f306aef9cd897c4a0))
+
+#### Correções
+
+* **ci:** builder buildx compartilhado não é removido no fim do job ([#128](https://github.com/SEGARK-oficial/CentralOps/issues/128)) ([92643f6](https://github.com/SEGARK-oficial/CentralOps/commit/92643f6ce7837caad05ff7c167aa9024dd5b2e41))
+* **dataplane:** ADR-0018 Ondas 0 e 1 — fim da perda silenciosa e deploy de produção ([#113](https://github.com/SEGARK-oficial/CentralOps/issues/113)) ([08673be](https://github.com/SEGARK-oficial/CentralOps/commit/08673be68660608df418d52b11721fc982a838dd))
+* **otel:** export direto ou via Collector sem vazar segredo nem perder telemetria ([#112](https://github.com/SEGARK-oficial/CentralOps/issues/112)) ([485daff](https://github.com/SEGARK-oficial/CentralOps/commit/485daffdac5f703605b1746240d47090f279e705))
+* **security:** escopo de tenant em test-connection, DELETE de integração e reset de cursor ([#115](https://github.com/SEGARK-oficial/CentralOps/issues/115)) ([47b38c2](https://github.com/SEGARK-oficial/CentralOps/commit/47b38c23466fe8d13eec058264e859133142151e))
+
+### v2.17.1 · 2026-11-06
+
+#### Correções
+
+* **integrations:** 500 na Visão geral de plataforma só-coleta + edição que descartava credenciais ([#110](https://github.com/SEGARK-oficial/CentralOps/issues/110)) ([46addbc](https://github.com/SEGARK-oficial/CentralOps/commit/46addbcb91f68426b02ea02b6619101a4b21ad22))
+
+### v2.17.0 · 2026-11-06
+
+#### Novidades
+
+* **azure:** ler os 3 streams de um Log Analytics workspace ([#108](https://github.com/SEGARK-oficial/CentralOps/issues/108)) ([89b6ab5](https://github.com/SEGARK-oficial/CentralOps/commit/89b6ab57520b7a421ba84835e6dbb305e62a1aec))
+
+### v2.16.0 · 2026-10-29
+
+#### Novidades
+
+* **collectors:** coletores Akamai WAF, Google Workspace e Microsoft 365 ([#104](https://github.com/SEGARK-oficial/CentralOps/issues/104)) ([65813fa](https://github.com/SEGARK-oficial/CentralOps/commit/65813faf71bb60a26351d6df47a9f2832454a038))
+
+### v2.15.0 · 2026-10-27
+
+#### Novidades
+
+* **azure:** coletor Microsoft Azure (Activity Log + Event Hubs) e ícones do GCP/Azure ([#102](https://github.com/SEGARK-oficial/CentralOps/issues/102)) ([d5410b6](https://github.com/SEGARK-oficial/CentralOps/commit/d5410b69582770b2701e21de132d48f0ada32e2a))
+
+### v2.14.1 · 2026-10-26
+
+#### Novidades
+
+* **partner:** contrato para desvincular/vincular org do parceiro Sophos (ADR-0017) ([#100](https://github.com/SEGARK-oficial/CentralOps/issues/100)) ([3b67519](https://github.com/SEGARK-oficial/CentralOps/commit/3b67519c4b7ce4d1371b71279e178d046e140654))
+
+### v2.14.0 · 2026-10-23
+
+#### Novidades
+
+* **gcp:** coletor Pub/Sub — Cloud Audit Logs, GKE e auditoria do Cloud SQL MySQL ([#95](https://github.com/SEGARK-oficial/CentralOps/issues/95)) ([b155a06](https://github.com/SEGARK-oficial/CentralOps/commit/b155a06f81a817b94b4eafff9e5af82021a5efc1))
+
+#### Correções
+
+* **ci:** snok/container-retention-policy v3.1.0 (formato novo do GITHUB_TOKEN) ([#97](https://github.com/SEGARK-oficial/CentralOps/issues/97)) ([0b64994](https://github.com/SEGARK-oficial/CentralOps/commit/0b64994f23ceff9e43bd5863b582a18df0a81b49))
+* **deps:** aiohttp 3.14.5 e certifi 2026.10.19 (CVEs HIGH/CRITICAL do gate Trivy) ([#96](https://github.com/SEGARK-oficial/CentralOps/issues/96)) ([3fb6e68](https://github.com/SEGARK-oficial/CentralOps/commit/3fb6e68384661ef56235820164a729423e65afc9))
+
+### v2.13.1 · 2026-10-17
+
+#### Correções
+
+* **ci:** suíte hermética para nomes de exemplo — destrava o build de release e o ci.yml ([d350d51](https://github.com/SEGARK-oficial/CentralOps/commit/d350d51feb00c6b25a3a618c05e77c70dbc16a11))
+
+### v2.13.0 · 2026-10-17
+
+#### Novidades
+
+* **enrichment:** política e fonte para todas as filhas, inclusive as futuras ([bab837d](https://github.com/SEGARK-oficial/CentralOps/commit/bab837d45ad1070f1c3870288891032dd08f16ab))
+* **mcp:** enriquecimento visível e operável pelo MCP embutido ([c135245](https://github.com/SEGARK-oficial/CentralOps/commit/c1352456e80dafd6441e7bbb616ad2200f832b18))
+
+#### Correções
+
+* **collectors:** último evento não volta a cada ciclo em 7 coletores com janela inclusiva ([80582ae](https://github.com/SEGARK-oficial/CentralOps/commit/80582ae840ce709e757ee9e0983d2c32e9c23b38))
+* **dataplane:** evento maior que o teto do Kafka vai à DLQ em vez de travar a coleta ([3a9050e](https://github.com/SEGARK-oficial/CentralOps/commit/3a9050e72221eba50ed02582021511f4554c8d40))
+* **deps:** pyjwt 2.13.0 -&gt; 2.15.1 (14 avisos PYSEC-2026, pip-audit --strict) ([36ca09b](https://github.com/SEGARK-oficial/CentralOps/commit/36ca09b30bf34022065e4dad3d7094e3120a3f3e))
+* **enrichment:** aba vira rota e a trilha para de oferecer 404 ([fc06fcc](https://github.com/SEGARK-oficial/CentralOps/commit/fc06fcc0c82e2fd50c48305f6532e9c97ebe4ca1))
+* **enrichment:** uma política ativa por org garantida pelo banco ([9653d10](https://github.com/SEGARK-oficial/CentralOps/commit/9653d10d03c0fc956a150033992b1e17285f60b1))
+* **sophos-cases:** janela parada no último case — memória da fronteira do cursor ([53e65e2](https://github.com/SEGARK-oficial/CentralOps/commit/53e65e20eee7b930a191c73bc26b07f1f7df0c5e))
+
+### v2.12.1 · 2026-09-27
+
+#### Correções
+
+* **deps:** anyio 4.13.0 -&gt; 4.14.2 (CVE-2026-63374, CRITICAL) ([#87](https://github.com/SEGARK-oficial/CentralOps/issues/87)) ([5fa4460](https://github.com/SEGARK-oficial/CentralOps/commit/5fa4460fea1ba9b6724b72eaf2f335541100000d))
+
+### v2.12.0 · 2026-09-27
+
+#### Novidades
+
+* **frontend:** auditoria WCAG 2.2 AA + performance + segurança do console ([#85](https://github.com/SEGARK-oficial/CentralOps/issues/85)) ([61d65ad](https://github.com/SEGARK-oficial/CentralOps/commit/61d65ad36cfbd3aa7b51377c5d397eb8ad46fd51))
+
+### v2.11.1 · 2026-09-13
+
+#### Correções
+
+* **build:** destrava o Trivy-gate — a camada de patch de SO ficava congelada no cache ([#83](https://github.com/SEGARK-oficial/CentralOps/issues/83)) ([4daa6ca](https://github.com/SEGARK-oficial/CentralOps/commit/4daa6ca7551d01dc9fa33c3ae28cb1990435ef51))
+
+### v2.11.0 · 2026-09-13
+
+#### Novidades
+
+* **mcp:** servidor MCP embutido no core, autenticado pela chave do analista ([#81](https://github.com/SEGARK-oficial/CentralOps/issues/81)) ([11d4f3a](https://github.com/SEGARK-oficial/CentralOps/commit/11d4f3a9ef138432ebf576170a11666253f85393))
+
+### v2.10.1 · 2026-09-10
+
+#### Correções
+
+* destrava re-sync do IRIS e agendamentos em deploy Sophos Partner ([#78](https://github.com/SEGARK-oficial/CentralOps/issues/78)) ([6dfdae3](https://github.com/SEGARK-oficial/CentralOps/commit/6dfdae3344712edfef6c2fb1751b68667724f3b3))
+* **flow:** limita fan-out e agrega EPM — /flow esgotava o pool e derrubava a API ([#80](https://github.com/SEGARK-oficial/CentralOps/issues/80)) ([d247f89](https://github.com/SEGARK-oficial/CentralOps/commit/d247f89e95e6ba9725af6a07f14e3f8059f114f1))
+
+### v2.10.0 · 2026-09-08
+
+#### Novidades
+
+* **correlation:** copy do Studio de regras (fluxo em grafo, inventário de campos) e docs da tela ([#73](https://github.com/SEGARK-oficial/CentralOps/issues/73)) ([618a504](https://github.com/SEGARK-oficial/CentralOps/commit/618a504dd621f609b2abce3d544b27f9a80cdec2))
+* **enrich:** configuração em banco, prontidão por organização e redesenho da UI ([#76](https://github.com/SEGARK-oficial/CentralOps/issues/76)) ([d7bd7f3](https://github.com/SEGARK-oficial/CentralOps/commit/d7bd7f3925b785679de6a013e34443f648ffe0eb))
+* **inflight:** motor de ausência de evento (ADR-0016) — rule_type absence ([#75](https://github.com/SEGARK-oficial/CentralOps/issues/75)) ([f5ca262](https://github.com/SEGARK-oficial/CentralOps/commit/f5ca2621e8c2f5edeed0d9c66fd47d51f1aea9c5))
+
+#### Correções
+
+* **frontend:** erro legível ao criar Service Account com nome inválido ([#77](https://github.com/SEGARK-oficial/CentralOps/issues/77)) ([13c7ea3](https://github.com/SEGARK-oficial/CentralOps/commit/13c7ea3c1d255c4d0a222d6ec5f6e997d76660a4))
+
+### v2.9.0 · 2026-09-07
+
+#### Novidades
+
+* achado por linha em OCSF 2004, webhook assinado com ciclo de vida da Detection, e sequência entre fontes em voo ([#71](https://github.com/SEGARK-oficial/CentralOps/issues/71)) ([4f5b0d0](https://github.com/SEGARK-oficial/CentralOps/commit/4f5b0d0108bac0dcf5f3e33788c759503a1a761c))
+* **correlação:** "onde chega o alerta?" nos tipos e na cópia, e o spike X0 da sequência entre fontes ([#72](https://github.com/SEGARK-oficial/CentralOps/issues/72)) ([384d9d7](https://github.com/SEGARK-oficial/CentralOps/commit/384d9d7e0df6a03869c14f4e4f67f7798de5a78e))
+* **correlação:** cópia do console para a prioridade de avaliação ([#57](https://github.com/SEGARK-oficial/CentralOps/issues/57)) ([4bf4af7](https://github.com/SEGARK-oficial/CentralOps/commit/4bf4af7c647325e4e0febb818a308c06ce4b33b5))
+* **correlação:** emissão por regra, agendamento em lote (schema) e teto de chaves por regra ([#64](https://github.com/SEGARK-oficial/CentralOps/issues/64)) ([886e9af](https://github.com/SEGARK-oficial/CentralOps/commit/886e9af3bf962663c0779e2805ad3085c4bca97a))
+* **correlação:** inventário de campos para quem escreve regra, e os 10 operadores no tipo ([#62](https://github.com/SEGARK-oficial/CentralOps/issues/62)) ([cb1450d](https://github.com/SEGARK-oficial/CentralOps/commit/cb1450d47f2e893d2536156209a853aec58a368f))
+* **correlação:** janela deslizante em voo — min_count em window_seconds por chave (W1.6) ([#69](https://github.com/SEGARK-oficial/CentralOps/issues/69)) ([badd6a0](https://github.com/SEGARK-oficial/CentralOps/commit/badd6a087f64b0211bf9209f47a0e2df346d5c8b))
+* **correlação:** os tipos do console enxergam a coluna que decide quem roda ([#56](https://github.com/SEGARK-oficial/CentralOps/issues/56)) ([de9e937](https://github.com/SEGARK-oficial/CentralOps/commit/de9e937f31cb12f2a0ce678de24fb9720c6666c3))
+* **cti:** ciclo de vida STIX contado, uma política em vigor por org e o pacote IOC → Detection ([#67](https://github.com/SEGARK-oficial/CentralOps/issues/67)) ([9e5cb90](https://github.com/SEGARK-oficial/CentralOps/commit/9e5cb9094a2f2d62b0e764109040c121e0b5b881))
+* **deteccao:** a Detection em voo sai como evento OCSF 2004 roteado ([#54](https://github.com/SEGARK-oficial/CentralOps/issues/54)) ([66a49e8](https://github.com/SEGARK-oficial/CentralOps/commit/66a49e82084d3580761e8cc37a94931cb49c198e))
+* **enrich:** AbuseIPDB, OTX e GreyNoise sobre um esqueleto remoto comum (W4.4) ([#70](https://github.com/SEGARK-oficial/CentralOps/issues/70)) ([5360a74](https://github.com/SEGARK-oficial/CentralOps/commit/5360a742b4e7b1be14e73bef2849f76fa323abd4))
+* **enrich:** circuit breaker por fonte e cota local — provedor morto deixa de custar ciclo ([#63](https://github.com/SEGARK-oficial/CentralOps/issues/63)) ([2dc4909](https://github.com/SEGARK-oficial/CentralOps/commit/2dc4909957b378d81d14550ae8a663969325389c))
+* **enrich:** enricher GeoIP/ASN local (mmdb) e remoção do Threat Intel legado ([#65](https://github.com/SEGARK-oficial/CentralOps/issues/65)) ([70d8ce2](https://github.com/SEGARK-oficial/CentralOps/commit/70d8ce2db41537596bf5e6c7238ab8406a468ff4))
+* **ingest:** plataforma push genérica custom_json com streams dinâmicos ([#66](https://github.com/SEGARK-oficial/CentralOps/issues/66)) ([c286975](https://github.com/SEGARK-oficial/CentralOps/commit/c2869750e1b20374e74ccef181c4d9d96b3640c6))
+* **syslog:** receptor syslog nativo (UDP/TCP/TLS) e classificação por conteúdo ([#68](https://github.com/SEGARK-oficial/CentralOps/issues/68)) ([decb28d](https://github.com/SEGARK-oficial/CentralOps/commit/decb28d3e2b1bf04012ffe2425999aee2072cd18))
+
+#### Correções
+
+* **build:** pina Cython abaixo de 3.3 — 3.3.0 quebra a compilacao ([#49](https://github.com/SEGARK-oficial/CentralOps/issues/49)) ([d1b034e](https://github.com/SEGARK-oficial/CentralOps/commit/d1b034e2814da09bd01db4ded65104badff1a839))
+* **ci:** o publish promovia imagem que um gate havia reprovado ([#53](https://github.com/SEGARK-oficial/CentralOps/issues/53)) ([9a01db1](https://github.com/SEGARK-oficial/CentralOps/commit/9a01db1b8d84b953617dffe08d483c883fe45195))
+* **inflight:** a Detection agora e gravada em teste, e a perda deixa de mentir ([#51](https://github.com/SEGARK-oficial/CentralOps/issues/51)) ([6ee76f1](https://github.com/SEGARK-oficial/CentralOps/commit/6ee76f168d0a2e9f9bd70d55dffb20934b03a962))
+* **inflight:** honestidade do detector em voo e fronteira de dado do repo público ([#47](https://github.com/SEGARK-oficial/CentralOps/issues/47)) ([eb63558](https://github.com/SEGARK-oficial/CentralOps/commit/eb63558894a35f69e59372af3b40abc83aa94428))
+* o release de teste passa a exercitar as features (flags, guardas e group_by em voo) ([#58](https://github.com/SEGARK-oficial/CentralOps/issues/58)) ([62df20d](https://github.com/SEGARK-oficial/CentralOps/commit/62df20d2a00a2012ffe5b7bbbb6e6298b3b65348))
+* **observabilidade:** a coleta parou por 6h e nenhuma tela disse isso ([#59](https://github.com/SEGARK-oficial/CentralOps/issues/59)) ([ac340c6](https://github.com/SEGARK-oficial/CentralOps/commit/ac340c6704ca7526a6e039f0ce01f8e799c7a015))
+* **seguranca:** excecao de banco carregava os VALORES da linha para o log ([#52](https://github.com/SEGARK-oficial/CentralOps/issues/52)) ([9020d0a](https://github.com/SEGARK-oficial/CentralOps/commit/9020d0a39e26eef832c1722e4f694b0cfe4d4e71))
+
+### v2.8.0 · 2026-08-18
+
+#### Novidades
+
+* **destinos:** OCSF direto para tabela coluna-wrapper e destino nano ([#41](https://github.com/SEGARK-oficial/CentralOps/issues/41)) ([b242f59](https://github.com/SEGARK-oficial/CentralOps/commit/b242f596c1f90fc7a1940230f803c953416f08ca))
+* um destino nano para N clientes (row_fields_from) + siem_event classifica por evento ([#45](https://github.com/SEGARK-oficial/CentralOps/issues/45)) ([1637fc7](https://github.com/SEGARK-oficial/CentralOps/commit/1637fc7b033d4481adc2c25db2bf36982b766d7e))
+
+#### Correções
+
+* **dlq:** reprocesso não atropela a ingestão + ícone do nano e porta 8443 ([#43](https://github.com/SEGARK-oficial/CentralOps/issues/43)) ([e739caf](https://github.com/SEGARK-oficial/CentralOps/commit/e739caf5992a9994a15302e242cd4caefb88cd5d))
+* **nano:** "Testar conexão" verde enquanto 90% dos INSERTs morriam ([#46](https://github.com/SEGARK-oficial/CentralOps/issues/46)) ([a1f819d](https://github.com/SEGARK-oficial/CentralOps/commit/a1f819d5a3eaa55491aa03bc9ef981894c653d7f))
+* **segurança:** vazamento cross-tenant no audit + 4 features que não entregavam ([#44](https://github.com/SEGARK-oficial/CentralOps/issues/44)) ([0d04579](https://github.com/SEGARK-oficial/CentralOps/commit/0d04579197b537f2e01bb32f29b0067219a3bfec))
+
+### v2.7.0 · 2026-08-15
+
+#### Novidades
+
+* **enrichment:** editar regras publicadas e ver se a consulta está de pé ([#34](https://github.com/SEGARK-oficial/CentralOps/issues/34)) ([0edd40a](https://github.com/SEGARK-oficial/CentralOps/commit/0edd40a45011c456edaace51b68f4b59b2b35375))
+
+#### Correções
+
+* **ci:** restaura o ci.yml (YAML inválido desde 19/jul) e o enum de RBAC que ele deixou passar ([#37](https://github.com/SEGARK-oficial/CentralOps/issues/37)) ([2732836](https://github.com/SEGARK-oficial/CentralOps/commit/2732836936fad020babb5723a3864762dc35681f))
+* **rbac:** escopo por dono, least privilege real, reset de coletor e catálogo de permissões ([#36](https://github.com/SEGARK-oficial/CentralOps/issues/36)) ([537559c](https://github.com/SEGARK-oficial/CentralOps/commit/537559c4e8f724471835b9d1fb037b4fa3c5f3a8))
+* **schedules,destinations:** editar agendamento, ambiente no histórico, credencial do webhook e OCSF 1.8 nos sinks ([#39](https://github.com/SEGARK-oficial/CentralOps/issues/39)) ([20cce99](https://github.com/SEGARK-oficial/CentralOps/commit/20cce99edd2ae8ca5022d1f19472d39a1825c5be))
+
+### v2.6.0 · 2026-08-11
+
+#### Novidades
+
+* **auth:** separa leitura de destinos e rotas de user.manage ([1257d93](https://github.com/SEGARK-oficial/CentralOps/commit/1257d9339ab19d4dc1beef5d455b496dd6770495))
+* **auth:** separa leitura de destinos e rotas de user.manage ([0a406d2](https://github.com/SEGARK-oficial/CentralOps/commit/0a406d2b45db7094eaad7ace75c958aca641b200))
+* **enrichment:** enricher TAXII 2.1, um conector para qualquer TIP ([26851cb](https://github.com/SEGARK-oficial/CentralOps/commit/26851cb778cf70a3754090bee5ff9e27dd9ff18b))
+* **enrichment:** enriquecimento em stream (ADR-LOCAL-0002) ([46d2772](https://github.com/SEGARK-oficial/CentralOps/commit/46d27728b5335348c2986d621269c0425ec4b792))
+* **enrichment:** enriquecimento em stream (ADR-LOCAL-0002) ([07aea9a](https://github.com/SEGARK-oficial/CentralOps/commit/07aea9a08b961a9b317f617d2e5f6b9be12cfa7d))
+* **enrichment:** fonte configurada por org — habilita OpenCTI e VirusTotal ([9543a47](https://github.com/SEGARK-oficial/CentralOps/commit/9543a47bb29dc79289f7a6a06355040b5736af53))
+* **enrichment:** fonte MSP, teste de conexão, presets OpenCTI e UI refeita ([1b21b14](https://github.com/SEGARK-oficial/CentralOps/commit/1b21b147abf5387a7c63d12c00e6a3a07963f4de))
+* **enrichment:** fonte MSP, teste de conexão, presets OpenCTI e UI refeita ([ccdc1d7](https://github.com/SEGARK-oficial/CentralOps/commit/ccdc1d7763960aedbd016518c701702522e2c49b))
+
+#### Correções
+
+* **backfill:** commita o job antes de publicar a task, e para de gravar id de SA em FK ([edc3a15](https://github.com/SEGARK-oficial/CentralOps/commit/edc3a15340f257eb3ec3ac5e49813550d026adfe))
+* **backfill:** commita o job antes de publicar a task, e para de gravar id de SA em FK ([a625d9f](https://github.com/SEGARK-oficial/CentralOps/commit/a625d9feea643584a48ac186524c4eed42e9110a))
+* **collectors:** curar cursor opaco recusado pelo vendor (4xx) ([082cb3c](https://github.com/SEGARK-oficial/CentralOps/commit/082cb3c5e7863e52f0d2850815f8f8f2c1e54004))
+* **collectors:** curar cursor opaco recusado pelo vendor (4xx) ([b6003e4](https://github.com/SEGARK-oficial/CentralOps/commit/b6003e47bf945f6dcb50f7a2d6dbddbad89aeb7e))
+* **compose:** API publica no mesmo broker Celery que os workers ([61bab74](https://github.com/SEGARK-oficial/CentralOps/commit/61bab7458dbde593dc4192c3fd0ef6c73c3a29a4))
+* **compose:** API publica no mesmo broker Celery que os workers ([c75a9a4](https://github.com/SEGARK-oficial/CentralOps/commit/c75a9a47deb58a8cd31a80c19e396f60c4d6ec76))
+* **enrichment:** corrige egresso não-gatado, UNKNOWN colapsado e aliasing de tabela ([b65e9b0](https://github.com/SEGARK-oficial/CentralOps/commit/b65e9b056c28d61e9eb26685e980b4b9468ef550))
+* **enrichment:** ícone dos botões empilhava acima do texto ([500f991](https://github.com/SEGARK-oficial/CentralOps/commit/500f991913435bbfa45749215a20346f75a8caed))
+
+### v2.5.1 · 2026-08-07
+
+#### Correções
+
+* **deps:** zerar HIGH/CRITICAL no gate Trivy da imagem ([650f67a](https://github.com/SEGARK-oficial/CentralOps/commit/650f67a03c1116019addc32e541bd16cd039165f))
+* **deps:** zerar HIGH/CRITICAL no gate Trivy da imagem ([239f8f5](https://github.com/SEGARK-oficial/CentralOps/commit/239f8f5af629765e75604a17bf893d9a86b7d72d))
+
+### v2.5.0 · 2026-08-05
+
+#### Novidades
+
+* **capture:** export carrega o jornal e a mascara de PII passa a falar OCSF ([afaffe9](https://github.com/SEGARK-oficial/CentralOps/commit/afaffe99a1efa31028cdee6804cca8880029d51b))
+* **capture:** fidelidade do wire por destino e filtros validados na API ([ec80970](https://github.com/SEGARK-oficial/CentralOps/commit/ec809708e6e2a9b2911f1c55d1054e46d37b7ff5))
+* **capture:** jornal por evento — estagio, tap de dedupe e admissao ([a7df04b](https://github.com/SEGARK-oficial/CentralOps/commit/a7df04bd325582ee4f209d4b4ffc338aeebe3045))
+* **capture:** trajetoria do evento na UI, export parametrizado e docs honestas ([d20f0d2](https://github.com/SEGARK-oficial/CentralOps/commit/d20f0d249a36681fc726ad71380d447a90d6704c))
+* **mappings:** concorrência otimista opcional no commit de versão ([d80c2e0](https://github.com/SEGARK-oficial/CentralOps/commit/d80c2e075963cdb41d7e32920d00c1c4d7fdccda))
+* **sophos:** coletar /siem/v1/events (telemetria de endpoint) ([ec16495](https://github.com/SEGARK-oficial/CentralOps/commit/ec16495c76e0feacd2c1b38e6fd7edbbde5e0fa9))
+
+#### Correções
+
+* 4 bugs do console (TTL de dedupe, limpar PII em rotas, autor das versões, economia em moeda) ([288487a](https://github.com/SEGARK-oficial/CentralOps/commit/288487a39061e410e7a0698a1a99ae2f219ec27e))
+* **api:** recusa campo desconhecido em UPDATE e conserta dialect/spec_kind ([51fc7bc](https://github.com/SEGARK-oficial/CentralOps/commit/51fc7bcd1aaa97030b3f59890f5bc3b38ceb4803))
+* **capture:** impede o tap de diagnostico de derrubar a coleta ([e895bea](https://github.com/SEGARK-oficial/CentralOps/commit/e895bea5cdef6424cb2d27abcdd5cc6b4c45e813))
+* **capture:** orcamento de bytes RESIDENTES e teto global de sessoes ([61e9159](https://github.com/SEGARK-oficial/CentralOps/commit/61e915922fbfb555751447fa0bf9c9137b7dbf1f))
+* **config:** faz o PUT persistir dedupe_ttl_seconds ([d3bc947](https://github.com/SEGARK-oficial/CentralOps/commit/d3bc9473aca157c812575ff43f3a1cbdfbc03d8c))
+* **flow:** nao culpa o preco por GB quando a causa e licenca ou zero legitimo ([1d19dd3](https://github.com/SEGARK-oficial/CentralOps/commit/1d19dd3d3536377b7b38014e234cbe9e49113034))
+* **integrations:** integração nova nunca coletava sem reiniciar o Beat ([9278881](https://github.com/SEGARK-oficial/CentralOps/commit/9278881f471835a4a806f45d4b3b60bb3a6cd09f))
+* **mappings:** resolve o autor das versoes em vez de expor o id cru ([21d183f](https://github.com/SEGARK-oficial/CentralOps/commit/21d183ff086bf25272f98a5f69079b2bf4160a64))
+* **mappings:** serve o vocabulario de acoes da auditoria pelo backend ([68329d1](https://github.com/SEGARK-oficial/CentralOps/commit/68329d137cd5d57105e023cd847a1725e90e0bc1))
+* **routes:** permite limpar campos nullable via null explicito no PUT ([3b03992](https://github.com/SEGARK-oficial/CentralOps/commit/3b0399236b2d687a892e68687b92e8e445c4cc78))
+* **sophos:** alinhar /siem/v1/events ao contrato OAS oficial ([334ef4c](https://github.com/SEGARK-oficial/CentralOps/commit/334ef4c0d1f7aceeeed2a300cdfbe84044554cfe))
+* **sophos:** curar cursor envenenado que causava 400 permanente ([af0de83](https://github.com/SEGARK-oficial/CentralOps/commit/af0de839999c1b7bb1eb0c8dfa3799f4ff246fd9))
+
+### v2.4.0 · 2026-07-25
+
+#### Novidades
+
+* **frontend:** redesign do console alinhado ao site comercial ([ce5693a](https://github.com/SEGARK-oficial/CentralOps/commit/ce5693a001ff706324e597f167d72edfa22863af))
+* **frontend:** redesign do console alinhado ao site comercial ([554ddc6](https://github.com/SEGARK-oficial/CentralOps/commit/554ddc6a76da4e9a3f51c48859001366af3a966e))
+
+#### Correções
+
+* 2.3.0 pendura o boot na migração — self-deadlock por segunda conexão ([ba11ebd](https://github.com/SEGARK-oficial/CentralOps/commit/ba11ebd5df4a5ded8784d4d35587adce017012de))
+* **config:** tira o placeholder "Sua Empresa" dos defaults de deploy ([31208cb](https://github.com/SEGARK-oficial/CentralOps/commit/31208cbf17331cde8b3a97f2c2eee3e69ce57bae))
+* **db:** não abrir segunda conexão dentro da transação de migração ([e88d09d](https://github.com/SEGARK-oficial/CentralOps/commit/e88d09de4370f12c85b50eeeb10deea457719309))
+* **deploy:** plumbar APP_DB_MIGRATION_LOCK_TIMEOUT_MS até o container ([5bbadd0](https://github.com/SEGARK-oficial/CentralOps/commit/5bbadd08dc667b112b78ec13b70ba4fc8b49dc95))
+* **flow:** ponto de status deixa de ser desenhado por cima do nome do nó ([eebbc7d](https://github.com/SEGARK-oficial/CentralOps/commit/eebbc7d3080561cbe0dd5bc9e2e049032be01eda))
+* **flow:** ponto de status deixa de ser desenhado por cima do nome do nó ([1e53491](https://github.com/SEGARK-oficial/CentralOps/commit/1e53491c28f6010786e342d961edef98abec9f3b))
+* **frontend:** liga o reservoir, conserta as URLs de docs e para de apagar raw_reduction ([8ffebaf](https://github.com/SEGARK-oficial/CentralOps/commit/8ffebaf7af544668fb9ca75f6d34349ade2c012e))
+
+### v2.3.0 · 2026-07-24
+
+#### Novidades
+
+* **api:** expor filtro de coleta e atraso real na API ([d22da15](https://github.com/SEGARK-oficial/CentralOps/commit/d22da1567a043e726ad6fa931c271ddb7beaf404))
+* **brand:** dar identidade própria ao CentralOps e corrigir o que os docs quebravam ([a3d84ae](https://github.com/SEGARK-oficial/CentralOps/commit/a3d84ae1727057a35e5833eeb66d28ef9a86a604))
+* **capture:** exportar eventos capturados em CSV/NDJSON com streaming ([bcdbb44](https://github.com/SEGARK-oficial/CentralOps/commit/bcdbb44629d6d60145955f5ce8bdc0c37c4dfdc4))
+* **capture:** rota estruturada no desfecho e antes/depois no inspetor ([6ba9b29](https://github.com/SEGARK-oficial/CentralOps/commit/6ba9b29b824b10522aaf1b6a2d1f2d4f00fbd142))
+* **collect:** filtro de coleta declarado pelo plugin, por integração ([a7e6e10](https://github.com/SEGARK-oficial/CentralOps/commit/a7e6e1010e33e6a9b8a45aa49d8314f366ed7d24))
+* **dedupe:** TTL em segundos (piso 4h) e fórmula de capacidade do Redis ([b829856](https://github.com/SEGARK-oficial/CentralOps/commit/b829856e4599db40b193149a9092ed822301be6b))
+* **destinations:** campo de preço por GB (FinOps) na UI do destino ([acc3bbe](https://github.com/SEGARK-oficial/CentralOps/commit/acc3bbea3a938c58c87cf95362c09ab4ab5fdaac))
+* filtro de coleta plugin-driven, trava de ciclo e medição do atraso real ([bf1d3aa](https://github.com/SEGARK-oficial/CentralOps/commit/bf1d3aa1de98274858cfc090602c84b45c83f1ed))
+* **helm:** expor as flags de PII, redução, metering e drift no chart ([492c7bb](https://github.com/SEGARK-oficial/CentralOps/commit/492c7bbd709061cebf84ff26e544e8e30ac7bd70))
+* **mappings:** podar o raw nos seeds — drop dos blobs Sophos e drop_nulls ([d3d2616](https://github.com/SEGARK-oficial/CentralOps/commit/d3d2616a9165fa71c46ec481e9943e5b9f9b3c64))
+* **metering:** decompor bytes_saved por causa e sinalizar mistura de unidades ([1a585c9](https://github.com/SEGARK-oficial/CentralOps/commit/1a585c9ff0981f84fb90a8bf61eaeceaa29724b7))
+* **reduction:** primitiva de drop do raw + Route.drop_raw, e o bug que apagava raw_reduction a cada edição ([7ad8a10](https://github.com/SEGARK-oficial/CentralOps/commit/7ad8a10f301768a281eb5af00c059b85ba791fe0))
+* **reduction:** primitiva de drop no raw_reduction (drop/keep_only/drop_nulls) ([3418799](https://github.com/SEGARK-oficial/CentralOps/commit/3418799bd4218b7b0969f373d66c8bc42abea19c))
+* **routes-ui:** expor "descartar raw" no formulário de rota ([17dfc90](https://github.com/SEGARK-oficial/CentralOps/commit/17dfc900003f27455637a04f844edea1e7f2f21a))
+* **routing:** Route.drop_raw — descartar o bloco raw por destino ([2546781](https://github.com/SEGARK-oficial/CentralOps/commit/25467818ac253972512c169cf131e2f841791d10))
+* **ui:** configurar o filtro de coleta e distinguir os dois atrasos ([45b56b0](https://github.com/SEGARK-oficial/CentralOps/commit/45b56b093046032715bcd463d6b219b15f892983))
+
+#### Correções
+
+* **capture:** scrubbar segredos embutidos em valores no ring de captura ([6578601](https://github.com/SEGARK-oficial/CentralOps/commit/657860112f9e6d0d8d9112b7065d093904fab289))
+* **collect:** trava por (integração, stream) e medição do atraso real ([a52de5c](https://github.com/SEGARK-oficial/CentralOps/commit/a52de5c63beffdb339903ecfa33b0558400d1645))
+* **config-bundle:** preservar drop_raw no round-trip de exportação ([96e263e](https://github.com/SEGARK-oficial/CentralOps/commit/96e263e29ff94be1faeb4a903bcb103a836c9af6))
+* **destinations:** não exibir o bucket parcial como se fosse a taxa do destino ([416e8e7](https://github.com/SEGARK-oficial/CentralOps/commit/416e8e71314a6b6166257ea867c14e77abb3c735))
+* **drift-ui:** tornar drift sem mapping filtrável e não engolir erro de carga ([0a906e1](https://github.com/SEGARK-oficial/CentralOps/commit/0a906e1280a240d5e6dbab92b484178d4a0a6ac6))
+* **drift,capture,metering:** detecção por path, captura com rota/antes-depois/export e metering honesto ([71aae41](https://github.com/SEGARK-oficial/CentralOps/commit/71aae41289e8c8e605a3d45c1eb073970d7e8ab9))
+* **drift,dedupe:** escopo subtree em drift/samples e TTL de dedupe em horas (piso 4h) ([ab33027](https://github.com/SEGARK-oficial/CentralOps/commit/ab33027508d22e0839e64ad70130dd60b8259bcf))
+* **drift,mappings:** escopo subtree-aware em drift, discover-fields e samples ([ff4a1f7](https://github.com/SEGARK-oficial/CentralOps/commit/ff4a1f7afd629ba78ae2dd636f24b33f8100cb28))
+* **drift:** detectar campos por PATH, não por chave de topo ([4c295b1](https://github.com/SEGARK-oficial/CentralOps/commit/4c295b17f644a22aab0c3a01b140d724328613ed))
+* **drift:** mascarar o valor de amostra persistido (PII fail-closed) ([42976ba](https://github.com/SEGARK-oficial/CentralOps/commit/42976baf25f3707a4b77e1bebe2ecdd4c42d3ed7))
+* **drift:** upsert atômico e fail-closed em organização nula ([cf66dff](https://github.com/SEGARK-oficial/CentralOps/commit/cf66dfffa18f2d667aff5539fb7bf02a45cd95ba))
+* **flow:** creditar volume da fonte no minuto real, não no fim do ciclo ([a92a547](https://github.com/SEGARK-oficial/CentralOps/commit/a92a5471ebdc4402119e2b606d2d5f4a3126f8fe))
+* **flow:** parar de recalcular a redução e rotular as bases de medição do card ([f801b51](https://github.com/SEGARK-oficial/CentralOps/commit/f801b5137f771f0dd58a86180fdefbaa73b0cba0))
+* **mappings:** parar de apagar raw_reduction a cada edição de mapping ([22ee873](https://github.com/SEGARK-oficial/CentralOps/commit/22ee873a949139892486360336b50ac89f72e147))
+* **observability:** gravar a latência de entrega real (a série era sempre vazia) ([afc3434](https://github.com/SEGARK-oficial/CentralOps/commit/afc343414d4210392309b7aec9809b40e606ed45))
+* **routes-ui:** corrigir textos da UI que descreviam o produto errado ([e4bedba](https://github.com/SEGARK-oficial/CentralOps/commit/e4bedbac086476763f76c85b2aed864d11a729fa))
+* **routes:** escopo de rotas subtree-aware, alinhado com fontes e integrações ([0b2d2fb](https://github.com/SEGARK-oficial/CentralOps/commit/0b2d2fb89f92208a82e11b6359d0389cdf32914a))
+* **routes:** revalidar condição e chave de supressão ao restaurar versão ([d6f0096](https://github.com/SEGARK-oficial/CentralOps/commit/d6f00961cac5b0666bc77e2f5170755cf5ab216c))
+* **routes:** validar suppress_key com a mesma allowlist da condition ([34f719f](https://github.com/SEGARK-oficial/CentralOps/commit/34f719f92ab977eeb8983fa074da14d99acc742b))
+* **routing:** corrigir aviso que dizia alavancas de redução desligadas por padrão ([2d45e18](https://github.com/SEGARK-oficial/CentralOps/commit/2d45e182d14c9f61c847ccb3c3d1f46d4e038b27))
+* **routing:** não carimbar sample_rate em rota protegida ([3b00539](https://github.com/SEGARK-oficial/CentralOps/commit/3b00539648fea6a17cc72dae1ab89cff92b5fb4f))
+* **suppress,routes,observability:** supressão que descartava tudo, latência nunca gravada e contadores do /flow inflados ([cb8c0c8](https://github.com/SEGARK-oficial/CentralOps/commit/cb8c0c81230781b8fd5bbf3f6872624d2a32fb3f))
+* **suppress:** não descartar tráfego com assinatura degenerada nem em rota protegida ([159f8d4](https://github.com/SEGARK-oficial/CentralOps/commit/159f8d4be47cbcde8b171a2641098293d7d56ee3))
+
+### v2.2.0 · 2026-07-19
+
+#### Novidades
+
+* **auth:** add correlation.preview, never granted to read-only roles ([925e971](https://github.com/SEGARK-oficial/CentralOps/commit/925e971f05856dd8cb00ff65b13c7aece54a2a79))
+* **capture:** record every event outcome, not just successful deliveries ([d6136e9](https://github.com/SEGARK-oficial/CentralOps/commit/d6136e9687d7729026e26e220811929fb5b40e83))
+* **i18n:** add the correlation namespace in pt, en and es ([253fc56](https://github.com/SEGARK-oficial/CentralOps/commit/253fc56a2a5e2a1568cf588c63e2725065321f24))
+* **inflight:** classify events in the pipeline, before they reach the SIEM ([428e337](https://github.com/SEGARK-oficial/CentralOps/commit/428e337199f5311a033e757062ac17c8b0d71e91))
+* **inflight:** preview a rule against real samples without persisting anything ([184efd9](https://github.com/SEGARK-oficial/CentralOps/commit/184efd9ddf655760d80d8d676344b8a8bb96444a))
+* **observability:** per-rule 24h counters, which the 3h TTL made impossible ([66ab079](https://github.com/SEGARK-oficial/CentralOps/commit/66ab079839bcef5e8242c83c5edd36c520d671d9))
+* **routes:** expose the volume-reduction levers end to end ([fcf6044](https://github.com/SEGARK-oficial/CentralOps/commit/fcf60446dd3f845dee2ede819a2423aa47a7f6c1))
+
+#### Correções
+
+* **capture-ui:** align the outcome vocabulary with the backend enum ([9104a60](https://github.com/SEGARK-oficial/CentralOps/commit/9104a60863989ad15a9b144df2a06997428cbdbb))
+* **contract:** expose eval_mode to the client and name inflight as a Detection source ([4c7f0f8](https://github.com/SEGARK-oficial/CentralOps/commit/4c7f0f87a5fffb4682c3f0771512591b85af7640))
+* **correlation:** normalise timestamps to UTC and fail closed on a broken where ([440a69e](https://github.com/SEGARK-oficial/CentralOps/commit/440a69e468b5be8a3117c16523f193273ad602d3))
+* **dedupe:** cut the TTL to 1 day, unify its default, and surface Redis eviction ([ddaf54d](https://github.com/SEGARK-oficial/CentralOps/commit/ddaf54d2589c52abe13714d6330f28d5cf3d696b))
+* **dedupe:** release unsettled claims on every data plane, not just kafka ([ac1a246](https://github.com/SEGARK-oficial/CentralOps/commit/ac1a2466f586ec0724169ccc4b7eb35e48de688f))
+* **flow:** attach the wheel-zoom listener as non-passive ([fb0817a](https://github.com/SEGARK-oficial/CentralOps/commit/fb0817a87ed8b72f6d94ce11f3f69630e56f146c))
+* **inflight:** implement contains, report rule truncation, and unbreak the cython sweep ([a31b9c0](https://github.com/SEGARK-oficial/CentralOps/commit/a31b9c05b63bbe421a67cf8c5bacc78a3804350b))
+* **providers:** advertise spec_kinds by runtime availability, not static catalog ([af00344](https://github.com/SEGARK-oficial/CentralOps/commit/af0034418c6fc3ca3f179939fb4828b245c53cd5))
+* **quarantine:** cap writes per reason per cycle and keep the metric faithful ([7c13cfa](https://github.com/SEGARK-oficial/CentralOps/commit/7c13cfa05215a21680f7fad4b02a39ced4cd8412))
+* **threat-intel:** drop the dead re-export that made the package unimportable ([84afcf8](https://github.com/SEGARK-oficial/CentralOps/commit/84afcf82aae0b88794b09eec89ce3b1669bddacb))
+
+#### Performance Improvements
+
+* **normalize:** resolve simple dot-paths without the jmespath interpreter ([2034852](https://github.com/SEGARK-oficial/CentralOps/commit/20348527890f4f415569da643836595ed4a667b2))
+
+### v2.1.0 · 2026-07-18
+
+#### Novidades
+
+* add manual release trigger to build-and-publish and update release-please to build both API and frontend images with provenance and signing ([a41c7ba](https://github.com/SEGARK-oficial/CentralOps/commit/a41c7ba01ab076e996e55f333df4780b35c8f65b))
+
+#### Correções
+
+* **collectors:** bound per-cycle work in all paginating collectors to stop the soft-timeout poison-loop ([4ecddaa](https://github.com/SEGARK-oficial/CentralOps/commit/4ecddaa07961f93a8f0e2c91c7b2ed71a8ba5395))
+* dispose DB engine pool on worker process initialization to ensure fork safety ([8489f54](https://github.com/SEGARK-oficial/CentralOps/commit/8489f5414e7c448a557cb5d8758e1cca62062548))
+* **flow:** record per-route route/drop counters unconditionally, not only under sampling ([db492f0](https://github.com/SEGARK-oficial/CentralOps/commit/db492f082c8612d6b5373944bcb1e340462e7932))
+* **metering:** credit bytes_saved for sampling and suppression reduction levers ([1a3cf9b](https://github.com/SEGARK-oficial/CentralOps/commit/1a3cf9ba2fd25ece297d19223545224ec23063a4))
+* **ocsf:** emit timestamp_t in milliseconds, map Veeam to 1006 and CloudWatch to Base Event ([659c110](https://github.com/SEGARK-oficial/CentralOps/commit/659c11077f6a6cc500eaf98b887bfce0ce197965))
+* update correlation engine to support millisecond timestamps and add Veeam brand icon ([21710bb](https://github.com/SEGARK-oficial/CentralOps/commit/21710bbe420362aedf4f76b461d72da3a4a7e320))
+
+#### Performance Improvements
+
+* **flow:** memoize FlowCanvas node/edge visuals, throttle pan to rAF, dedupe gradients, cap SMIL particles ([87d8126](https://github.com/SEGARK-oficial/CentralOps/commit/87d8126047b1cdc539b9a8eedf555bd4011202eb))
+
+### v2.0.0 · 2026-07-17
+
+#### ⚠️ Mudanças incompatíveis
+
+* the Wazuh-only alerts surface was removed (route /alerts, alerts API endpoints, the /dashboard/summary v1 Accept path, and the MCP list_integration_alerts tool). Use federated search (Investigations) + Detections instead. Sophos/Wazuh alert *ingestion* is unchanged.
+
+#### Novidades
+
+* add Wazuh detection mapping validation and fix missing seed definition ([567ff40](https://github.com/SEGARK-oficial/CentralOps/commit/567ff408bff832a9bed9f0cd672780b7214b4a9d))
+* implement node aggregation with +N expand functionality and update FlowCanvas layout constants ([736f1f1](https://github.com/SEGARK-oficial/CentralOps/commit/736f1f10b0adf81db123a5130765af2de95cf4dc))
+* implement robust CSV export for federated search results and add i18n support for federated search labels ([48699e1](https://github.com/SEGARK-oficial/CentralOps/commit/48699e15d640cee0d1c846c7831779f79798c2ec))
+* replace raw condition operator labels with localized, human-friendly definitions in RouteConditionEditor ([a6538e7](https://github.com/SEGARK-oficial/CentralOps/commit/a6538e7799d808297e4e7dd93c4915a0ad04bdc0))
+
+#### Correções
+
+* dispose DB pool on soft-timeout and initialize local variables early to prevent UnboundLocalError during pipeline failures ([4dc3b33](https://github.com/SEGARK-oficial/CentralOps/commit/4dc3b33aae3208fca5e107079bb360cede50159e))
+* let global admins scope live capture to a tenant via org selector ([baaadae](https://github.com/SEGARK-oficial/CentralOps/commit/baaadae2498031b71aabe6ce58925c36df859e74))
+* prevent normalization engine from applying pre_cast and value_map to default values to avoid errors with non-string defaults ([6f7c675](https://github.com/SEGARK-oficial/CentralOps/commit/6f7c6750c70b4ed4ae5214c28517de35d4663842))
+* prevent session cookie boot crashes by handling empty environment variables and fixing OCSF resource path anchoring. ([329b37a](https://github.com/SEGARK-oficial/CentralOps/commit/329b37a1dbd3edb169da41b96aebabc15b881c23))
+* resolve RedBeat starvation and crash-loops by increasing lock timeout, setting max loop interval, and enforcing idempotent scheduler registration. ([29038a8](https://github.com/SEGARK-oficial/CentralOps/commit/29038a8faed3747fb97577303fc78604e2beca6b))
+* sanitize service account shim IDs to prevent foreign key violations in audit and mapping logs ([cf43df8](https://github.com/SEGARK-oficial/CentralOps/commit/cf43df811db796d239dec3914ef9e08d0918fb71))
+
+#### Performance Improvements
+
+* batch ingestion metering with InVolumeAccumulator to reduce Redis I/O latency in pipeline ([13e4cbc](https://github.com/SEGARK-oficial/CentralOps/commit/13e4cbce09b84b716610568b31c72e1ffe402518))
+
+#### Code Refactoring
+
+* document alerts surface removal as breaking ([f424f36](https://github.com/SEGARK-oficial/CentralOps/commit/f424f368bf1560299f8e9fb455d54b14424ff4b4))
+
+## 1.x
+
+### v1.1.0 · 2026-07-16
+
+#### Novidades
+
+* implement license gating for tenant sync and reduce license keyring log noise ([a9bbccb](https://github.com/SEGARK-oficial/CentralOps/commit/a9bbccbed91c8447890820df4afd66752607acb6))
+
+### v1.0.1 · 2026-07-16
+
+#### Correções
+
+* **ci:** runners GitHub-hosted; restaura () removidos na limpeza; tira detalhes de repo privado dos docs públicos ([a2f3bb1](https://github.com/SEGARK-oficial/CentralOps/commit/a2f3bb11b4c775ca456e11ded8abd6c7978f6006))
+* **frontend:** apk upgrade patches c-ares CVE-2026-33630 (Trivy HIGH gate) ([ff96b3c](https://github.com/SEGARK-oficial/CentralOps/commit/ff96b3cf41c5c39087021b207f0add3e7846ed7d))

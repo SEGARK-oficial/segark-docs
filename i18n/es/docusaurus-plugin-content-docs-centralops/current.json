@@ -1,0 +1,70 @@
+{
+  "version.label": {
+    "message": "2.x",
+    "description": "The label for version current"
+  },
+  "sidebar.centralops.category.Começar": {
+    "message": "Empezar",
+    "description": "The label for category 'Começar' in sidebar 'centralops'"
+  },
+  "sidebar.centralops.category.Conceitos": {
+    "message": "Conceptos",
+    "description": "The label for category 'Conceitos' in sidebar 'centralops'"
+  },
+  "sidebar.centralops.category.Operação diária": {
+    "message": "Operación diaria",
+    "description": "The label for category 'Operação diária' in sidebar 'centralops'"
+  },
+  "sidebar.centralops.category.Administração": {
+    "message": "Administración",
+    "description": "The label for category 'Administração' in sidebar 'centralops'"
+  },
+  "sidebar.centralops.category.Integrações": {
+    "message": "Integraciones",
+    "description": "The label for category 'Integrações' in sidebar 'centralops'"
+  },
+  "sidebar.centralops.category.Mappings (CML)": {
+    "message": "Mappings (CML)",
+    "description": "The label for category 'Mappings (CML)' in sidebar 'centralops'"
+  },
+  "sidebar.centralops.category.Pipelines": {
+    "message": "Pipelines",
+    "description": "The label for category 'Pipelines' in sidebar 'centralops'"
+  },
+  "sidebar.centralops.category.Saídas & Roteamento": {
+    "message": "Salidas y enrutamiento",
+    "description": "The label for category 'Saídas & Roteamento' in sidebar 'centralops'"
+  },
+  "sidebar.centralops.category.Destinos": {
+    "message": "Destinos",
+    "description": "The label for category 'Destinos' in sidebar 'centralops'"
+  },
+  "sidebar.centralops.category.Roteamento": {
+    "message": "Enrutamiento",
+    "description": "The label for category 'Roteamento' in sidebar 'centralops'"
+  },
+  "sidebar.centralops.category.Runbooks (SRE)": {
+    "message": "Runbooks (SRE)",
+    "description": "The label for category 'Runbooks (SRE)' in sidebar 'centralops'"
+  },
+  "sidebar.centralops.category.Compliance": {
+    "message": "Cumplimiento",
+    "description": "The label for category 'Compliance' in sidebar 'centralops'"
+  },
+  "sidebar.centralops.category.Instalação & Deploy": {
+    "message": "Instalación y despliegue",
+    "description": "The label for category 'Instalação & Deploy' in sidebar 'centralops'"
+  },
+  "sidebar.centralops.category.Edições & Upgrade": {
+    "message": "Ediciones y actualización",
+    "description": "The label for category 'Edições & Upgrade' in sidebar 'centralops'"
+  },
+  "sidebar.centralops.category.Enriquecimento": {
+    "message": "Enriquecimiento",
+    "description": "The label for category 'Enriquecimento' in sidebar 'centralops'"
+  },
+  "sidebar.centralops.category.API": {
+    "message": "API",
+    "description": "The label for category 'API' in sidebar 'centralops'"
+  }
+}
