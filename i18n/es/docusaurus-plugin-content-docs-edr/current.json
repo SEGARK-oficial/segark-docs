@@ -1,0 +1,22 @@
+{
+  "version.label": {
+    "message": "Beta",
+    "description": "The label for version current"
+  },
+  "sidebar.edr.category.Antes de instalar": {
+    "message": "Antes de instalar",
+    "description": "The label for category 'Antes de instalar' in sidebar 'edr'"
+  },
+  "sidebar.edr.category.Instalação": {
+    "message": "Instalación",
+    "description": "The label for category 'Instalação' in sidebar 'edr'"
+  },
+  "sidebar.edr.category.Operação do dia a dia": {
+    "message": "Operación diaria",
+    "description": "The label for category 'Operação do dia a dia' in sidebar 'edr'"
+  },
+  "sidebar.edr.category.Solução de problemas": {
+    "message": "Solución de problemas",
+    "description": "The label for category 'Solução de problemas' in sidebar 'edr'"
+  }
+}

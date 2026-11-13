@@ -1,0 +1,32 @@
+{
+  "portal.meta.title": {
+    "message": "Documentation"
+  },
+  "portal.meta.description": {
+    "message": "Documentation for SEGARK Pipeline and SEGARK EDR."
+  },
+  "portal.heading": {
+    "message": "SEGARK documentation"
+  },
+  "portal.intro": {
+    "message": "Choose a product. Each one has its own documentation, versions and changelog."
+  },
+  "portal.pipeline.description": {
+    "message": "Security data pipeline: collection, OCSF normalization, enrichment, reduction and routing. Powered by the open-source CentralOps engine."
+  },
+  "portal.pipeline.docs": {
+    "message": "Documentation (2.x)"
+  },
+  "portal.changelog": {
+    "message": "Changelog"
+  },
+  "portal.edr.description": {
+    "message": "Detection and response for Linux servers, hosted in your own environment. In beta."
+  },
+  "portal.edr.docs": {
+    "message": "Documentation"
+  },
+  "portal.edr.ports": {
+    "message": "Ports and firewall"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "title": {
+    "message": "SEGARK Docs",
+    "description": "The title in the navbar"
+  },
+  "item.label.Produtos": {
+    "message": "Products",
+    "description": "Navbar item with label Produtos"
+  },
+  "item.label.Pipeline": {
+    "message": "Pipeline",
+    "description": "Navbar item with label Pipeline"
+  },
+  "item.label.EDR": {
+    "message": "EDR",
+    "description": "Navbar item with label EDR"
+  },
+  "item.label.Versões": {
+    "message": "Releases",
+    "description": "Navbar item with label Versões"
+  },
+  "item.label.SEGARK Pipeline (CentralOps)": {
+    "message": "SEGARK Pipeline (CentralOps)",
+    "description": "Navbar item with label SEGARK Pipeline (CentralOps)"
+  },
+  "item.label.SEGARK EDR": {
+    "message": "SEGARK EDR",
+    "description": "Navbar item with label SEGARK EDR"
+  }
+}
