@@ -23,6 +23,17 @@ npm start                # http://localhost:3000
 npm run build            # falha em qualquer link quebrado
 ```
 
+## Publicação e o que é automático
+
+`.github/workflows/deploy.yml` publica no GitHub Pages a cada push na `main` e uma vez por dia (09:17 UTC). Em pull request ele só constrói e confere links e admonitions.
+
+| O quê | Como chega aqui |
+|---|---|
+| Texto da doc (CentralOps e EDR) | PR neste repositório. Mudar código no CentralOps ou no EDR **não** altera a doc. |
+| Changelog do CentralOps | Automático: `npm run sync:changelog` lê as GitHub Releases (release-please) antes de cada build. Uma release nova aparece no próximo build: no máximo um dia, ou na hora com "Run workflow" no Actions. |
+| Changelog do EDR | À mão em `products/edr/docs/changelog.md`: o EDR ainda não publica releases. |
+| Capturas do console do CentralOps | `frontend/scripts/docs-screenshots*.mjs` no CentralOps, gravando em `static/img/centralops/console/` deste repositório. |
+
 ## Versionamento
 
 As versões seguem a **linha maior** de cada produto, como o Wazuh faz com 3.x e 4.x:
