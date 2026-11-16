@@ -77,6 +77,7 @@ const sidebars: SidebarsConfig = {
         'integrations/wazuh',
         'integrations/crowdstrike',
         'integrations/microsoft-defender',
+        'integrations/segark-edr',
         'integrations/google-cloud',
         'integrations/microsoft-azure',
         'integrations/akamai',
