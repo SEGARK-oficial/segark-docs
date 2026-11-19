@@ -38,6 +38,4 @@ O formulário marca cada campo como **Recomendado** ou **Não recomendado**, e a
 Mudanças arriscadas, como desligar o anti-ransomware ou incluir exclusões, só são publicadas depois que **um segundo administrador** aprova.
 :::
 
-:::info[Captura de tela]
-`static/img/edr/politicas/formulario.png`: formulário da política com os selos Recomendado e Não recomendado.
-:::
+![Formulário da política com os selos Recomendado e Não recomendado](/img/edr/politicas/formulario.png)
