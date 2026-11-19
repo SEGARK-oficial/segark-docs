@@ -10,7 +10,7 @@ O jeito mais simples é o **comando de uma linha** que o console gera. Ele baixa
 
 ## 1. Gerar o comando
 
-1. No console, abra **Instalação**.
+1. No console, abra **Implantação** (com **Linux** selecionado).
 2. Escolha um **token de registro**. O padrão serve para começar. Para separar lotes por grupo, tags ou validade, crie um em **Novo token de registro**.
 3. Em **Gerar comando de instalação**, dê um nome ao link e escolha a validade (de 1 a 720 horas, padrão 72) e, se quiser, um limite de downloads.
 4. Copie o comando (curl ou wget).
@@ -45,7 +45,7 @@ Cada download carrega uma credencial de uso único: **rode o comando em cada hos
 
 ### Hosts sem acesso ao gateway na instalação
 
-Em **Instalação**, use **Baixar instalador completo**: um `.sh` autocontido com os pacotes das duas arquiteturas. Copie para o host e rode com `sudo sh`.
+Em **Implantação**, use **Baixar instalador completo**: um `.sh` autocontido com os pacotes das duas arquiteturas. Copie para o host e rode com `sudo sh`.
 
 ## 3. Conferir
 

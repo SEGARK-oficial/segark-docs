@@ -31,6 +31,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'operacao/alertas',
         'operacao/politicas',
+        'operacao/deteccao-comportamental',
         'operacao/anti-ransomware',
         'operacao/machine-learning',
         'operacao/resposta',
