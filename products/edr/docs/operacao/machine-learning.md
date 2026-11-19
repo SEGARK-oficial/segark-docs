@@ -48,13 +48,13 @@ Num prompt elevado (Administrador), escolha o modo:
 
 ```bat
 :: 1 = relatório (só registra no log do agente)
-reg add HKLM\SOFTWARE\Myproj\EndpointDefense\PeMl /v Mode /t REG_DWORD /d 1 /f /reg:64
+reg add HKLM\SOFTWARE\sensor-spl\PeMl /v Mode /t REG_DWORD /d 1 /f /reg:64
 
 :: 2 = alerta (detecção só de alerta no console)
-reg add HKLM\SOFTWARE\Myproj\EndpointDefense\PeMl /v Mode /t REG_DWORD /d 2 /f /reg:64
+reg add HKLM\SOFTWARE\sensor-spl\PeMl /v Mode /t REG_DWORD /d 2 /f /reg:64
 
 :: 0 = desligado (o padrão)
-reg add HKLM\SOFTWARE\Myproj\EndpointDefense\PeMl /v Mode /t REG_DWORD /d 0 /f /reg:64
+reg add HKLM\SOFTWARE\sensor-spl\PeMl /v Mode /t REG_DWORD /d 0 /f /reg:64
 ```
 
 O agente relê a chave a cada 30 segundos, sem reiniciar. Qualquer valor diferente de `1` ou `2` vale como desligado.
