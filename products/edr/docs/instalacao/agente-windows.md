@@ -31,7 +31,7 @@ Testado em laboratório e na integração contínua: Windows 11, Windows Server 
 
 1. No console, abra **Implantação** e escolha **Windows**.
 2. No cartão **Agente Windows**, confira a versão selecionada e clique em **Baixar MSI**. O cartão mostra o SHA-256 do arquivo e as pendências, se houver.
-3. Em **Gerar comando de instalação**, escolha o token de registro, a validade e, se quiser, o limite de usos. O console mostra a linha `msiexec` uma vez só: copie antes de fechar.
+3. No cartão **Instalar o agente no Windows**, clique em **Obter o comando de instalação**. Para escolher o token de registro, a validade e o limite de usos, abra **Versões, links e opções avançadas de implantação**, use o cartão **Linha msiexec personalizada (token, validade e limite)** e clique em **Gerar comando de instalação**. O console mostra a linha `msiexec` uma vez só: copie antes de fechar.
 4. No host, abra um prompt elevado (Administrador) na pasta do MSI e cole a linha.
 
 O MSI é o mesmo para todos os clientes e não carrega credencial. O tenant, o grupo e as tags vêm do link, e cada host recebe uma credencial de registro de uso único. O instalador fixa o certificado do gateway e não usa as autoridades certificadoras do sistema.

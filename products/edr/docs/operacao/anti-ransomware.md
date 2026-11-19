@@ -22,7 +22,7 @@ No Linux, a restauração cobre **só dados de usuário**: nunca caminhos do sis
 
 O alerta tem severidade alta e técnica MITRE ATT&CK T1486. No alerta, um analista com papel de resposta pode:
 
-- **Refazer a restauração**, se algum arquivo não voltou;
+- **Refazer rollback**, para restaurar de novo se algum arquivo não voltou;
 - **Liberar** o programa, quando era legítimo (e então criar a exclusão na política).
 
 Essas ações estão disponíveis para hosts Linux.

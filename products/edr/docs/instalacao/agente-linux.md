@@ -10,10 +10,15 @@ O jeito mais simples é o **comando de uma linha** que o console gera. Ele baixa
 
 ## 1. Gerar o comando
 
-1. No console, abra **Implantação** (com **Linux** selecionado).
-2. Escolha um **token de registro**. O padrão serve para começar. Para separar lotes por grupo, tags ou validade, crie um em **Novo token de registro**.
-3. Em **Gerar comando de instalação**, dê um nome ao link e escolha a validade (de 1 a 720 horas, padrão 72) e, se quiser, um limite de downloads.
-4. Copie o comando (curl ou wget).
+No console, abra **Implantação** (com **Linux** selecionado). Há dois caminhos:
+
+- **Rápido:** no cartão **Instalar o agente no Linux**, clique em **Obter o comando de instalação**. O comando vale por até 30 dias, sem limite de instalações: quem o tiver registra hosts no seu tenant, então trate-o como segredo. Se ele vazar, use **Invalidar todos os comandos já gerados** no mesmo cartão.
+- **Personalizado**, para separar lotes por grupo e tags, ou limitar validade e downloads:
+  1. Escolha um **token de registro**, ou crie um em **Novo token de registro** (na seção **Tokens de registro (avançado)**).
+  2. Abra **Versões, links e opções avançadas de implantação** e, no cartão **Comando personalizado (token, validade e limite)**, dê um nome ao link, escolha a validade (de 1 a 720 horas, padrão 72) e, se quiser, um limite de downloads.
+  3. Clique em **Gerar comando de instalação**.
+
+Copie o comando (curl ou wget).
 
 :::caution[O comando aparece uma vez só]
 A plataforma guarda só o hash do link. Se perder o comando, gere outro.
