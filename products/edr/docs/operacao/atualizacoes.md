@@ -25,6 +25,4 @@ Para forçar um host a atualizar agora, use **Atualizar agora** no dispositivo o
 
 A plataforma baixa as versões novas do servidor de distribuição da SEGARK com a sua licença. Se a licença expirar, os agentes continuam protegendo com o que já têm, mas param de receber versões novas.
 
-:::info[Captura de tela]
-`static/img/edr/atualizacoes/aneis.png`: tela de anéis com a versão de cada anel.
-:::
+![Anéis de atualização com a versão do agente de cada anel](/img/edr/atualizacoes/aneis.png)

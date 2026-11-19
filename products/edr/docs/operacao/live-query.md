@@ -18,6 +18,4 @@ Exemplos de uso no dia a dia:
 - listar onde um pacote vulnerável está instalado;
 - conferir quem tem chave SSH autorizada em servidores críticos.
 
-:::info[Captura de tela]
-`static/img/edr/live-query/resultado.png`: resultado de uma consulta em vários hosts.
-:::
+![Resultado de uma consulta ao vivo em vários hosts](/img/edr/live-query/resultado.png)

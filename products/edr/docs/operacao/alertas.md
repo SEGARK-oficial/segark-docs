@@ -26,8 +26,6 @@ Dá para mudar status e responsável de vários alertas de uma vez, e deixar not
 - **Eventos relacionados**: arquivos, conexões e DNS ligados à detecção.
 - **Origem da detecção**: regra comportamental, antivírus, reputação, anti-ransomware ou machine learning. Filtre por origem para separar, por exemplo, o que o modelo de ML marcou.
 
-:::info[Captura de tela]
-`static/img/edr/alertas/detalhe.png`: um alerta aberto, com a árvore de processos e as ações de resposta.
-:::
+![Detalhe de um alerta com a árvore de processos e as ações de resposta](/img/edr/alertas/detalhe.png)
 
 Para agir sobre o host a partir do alerta, veja [Resposta](./resposta.md).

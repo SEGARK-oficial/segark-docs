@@ -33,6 +33,7 @@ npm run build            # falha em qualquer link quebrado
 | Changelog do CentralOps | Automático: `npm run sync:changelog` lê as GitHub Releases (release-please) antes de cada build. Uma release nova aparece no próximo build: no máximo um dia, ou na hora com "Run workflow" no Actions. |
 | Changelog do EDR | À mão em `products/edr/docs/changelog.md`: o EDR ainda não publica releases. |
 | Capturas do console do CentralOps | `frontend/scripts/docs-screenshots*.mjs` no CentralOps, gravando em `static/img/centralops/console/` deste repositório. |
+| Capturas do console do EDR | `e2e/run.sh docs-screenshots <dir>` no OpenEDR, com dados sintéticos (instruções em `docs/docs-screenshots.md` de lá). Depois, copie `<dir>/edr/` para `static/img/edr/` deste repositório. |
 
 ## Versionamento
 
@@ -68,3 +69,16 @@ Cada lugar que precisa de imagem tem um bloco:
 Para preencher: salve a imagem no caminho indicado (PNG, largura de 1600 px, tema claro, sem dados reais de cliente) e troque o bloco por `![Descrição curta](/img/edr/<página>/<nome>.png)`.
 
 Para listar o que falta: `grep -rn "Captura de tela" products/`.
+
+As capturas do EDR não são tiradas à mão. O OpenEDR tem um script que sobe a pilha do e2e com dados sintéticos (empresa `suaempresa`, hosts e endereços fictícios) e grava as imagens nos nomes e nas pastas daqui, com 1600 px de largura, tema claro e segredos mascarados:
+
+```bash
+# no repositório OpenEDR
+E2E_PROJECT=openedr-docs E2E_AGENT_PORT=9080 E2E_CONSOLE_PORT=9443 \
+  e2e/run.sh docs-screenshots /tmp/capturas-edr
+E2E_PROJECT=openedr-docs e2e/run.sh down
+# aqui
+cp -R /tmp/capturas-edr/edr/. static/img/edr/
+```
+
+Para uma tela nova, acrescente-a ao script (`web/scripts/docs-screenshots.mjs` e `e2e/docs_seed.py` no OpenEDR, ver `docs/docs-screenshots.md` de lá) em vez de capturar à mão. Assim todas as imagens se refazem juntas quando o console muda.

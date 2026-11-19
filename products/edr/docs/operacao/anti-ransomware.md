@@ -31,6 +31,4 @@ Essas ações estão disponíveis para hosts Linux.
 
 Programas de backup e de compactação podem parecer ransomware. Exclua pelo caminho ou pela impressão digital (SHA-256) do executável na política. Incluir exclusão exige aprovação de um segundo administrador.
 
-:::info[Captura de tela]
-`static/img/edr/anti-ransomware/alerta.png`: alerta de criptografia em massa com as ações Refazer restauração e Liberar.
-:::
+![Alerta de ransomware contido com as ações Refazer rollback e Liberar](/img/edr/anti-ransomware/alerta.png)

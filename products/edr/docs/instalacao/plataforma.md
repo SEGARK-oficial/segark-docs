@@ -71,8 +71,6 @@ docker compose ps                                   # todos "healthy" ou "runnin
 curl -sk https://127.0.0.1:9443/api/health/ready    # API pronta
 ```
 
-:::info[Captura de tela]
-`static/img/edr/instalacao/compose-ps.png`: saída do `docker compose ps` com todos os serviços saudáveis.
-:::
+![Saída do docker compose ps com todos os serviços saudáveis](/img/edr/instalacao/compose-ps.png)
 
 Siga para o [primeiro acesso](./primeiro-acesso.md).
