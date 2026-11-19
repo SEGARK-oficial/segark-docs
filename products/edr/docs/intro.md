@@ -20,7 +20,7 @@ O SEGARK EDR está em beta, no programa de acesso antecipado. Recursos marcados 
 | Parte | O que faz | Onde roda |
 |---|---|---|
 | **Plataforma** | Console web, API e o gateway que recebe os agentes. Guarda alertas, telemetria e a trilha de auditoria. | Um servidor seu, com Docker Compose. |
-| **Agente** | Coleta eventos do sistema, aplica as políticas e executa as ações de resposta. | Cada servidor Linux protegido. O agente Windows está em desenvolvimento. |
+| **Agente** | Coleta eventos do sistema, detecta ameaças por assinatura e por comportamento, aplica as políticas e executa as ações de resposta. | Cada servidor Linux protegido. O agente Windows está em pré-release, só para avaliação ([detalhes](./instalacao/agente-windows.md)). |
 
 ## Como os dados circulam
 
@@ -41,3 +41,4 @@ Passar do limite de assentos só impede que **novos** agentes se registrem. Os a
 2. Libere as [portas e regras de firewall](./rede/portas-e-firewall.md).
 3. [Instale a plataforma](./instalacao/plataforma.md) e faça o [primeiro acesso](./instalacao/primeiro-acesso.md).
 4. [Instale o agente](./instalacao/agente-linux.md) nos servidores.
+5. Ligue a [detecção comportamental](./operacao/deteccao-comportamental.md) em sombra num grupo piloto e meça o ruído antes de promover regras a alerta.
