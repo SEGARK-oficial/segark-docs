@@ -56,6 +56,4 @@ O passo a passo de cada uma está em [Detecção comportamental](./deteccao-comp
 Com **Exigir aprovação de um segundo administrador** ligado (cartão **Publicação de políticas**), as mudanças arriscadas, como desligar o anti-ransomware, incluir exclusões ou ligar a resposta automática do motor comportamental, só são publicadas depois que **outro administrador** aprova. A opção vem desligada: ligue-a se a sua empresa exige quatro olhos. Ligada ou não, toda mudança fica na auditoria com quem, quando e o que mudou.
 :::
 
-:::info[Captura de tela]
-`static/img/edr/politicas/formulario.png`: formulário da política com os selos Recomendado e Não recomendado.
-:::
+![Formulário da política com os selos Recomendado e Não recomendado](/img/edr/politicas/formulario.png)

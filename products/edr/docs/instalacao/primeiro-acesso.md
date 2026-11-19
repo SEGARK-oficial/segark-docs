@@ -10,25 +10,19 @@ description: Entrar no console, ativar o MFA, importar a licença e revisar as c
 
 Abra `https://<servidor>:9443` (ou o túnel SSH, veja [Portas e firewall](../rede/portas-e-firewall.md#acesso-ao-console)) e entre com `admin@suaempresa` e a senha de uso único. O console pede uma senha nova antes de qualquer outra coisa.
 
-:::info[Captura de tela]
-`static/img/edr/primeiro-acesso/login.png`: tela de login do console.
-:::
+![Tela de login do console](/img/edr/primeiro-acesso/login.png)
 
 ## 2. Cadastrar o autenticador (MFA)
 
 A verificação em duas etapas por app autenticador (TOTP) é obrigatória para todos os usuários. Escaneie o QR code com o seu aplicativo e confirme com um código.
 
-:::info[Captura de tela]
-`static/img/edr/primeiro-acesso/mfa.png`: cadastro do autenticador com o QR code.
-:::
+![Cadastro do autenticador com o QR code](/img/edr/primeiro-acesso/mfa.png)
 
 ## 3. Importar a licença
 
 Em **Administração › Licença**, cole a licença gerada no portal da SEGARK ou envie o arquivo de licença offline. A licença é verificada localmente, sem acesso à internet.
 
-:::info[Captura de tela]
-`static/img/edr/primeiro-acesso/licenca.png`: tela de licença com assentos usados e disponíveis.
-:::
+![Tela de licença com os agentes usados e disponíveis](/img/edr/primeiro-acesso/licenca.png)
 
 ## 4. Revisar a segurança da organização
 

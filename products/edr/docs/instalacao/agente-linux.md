@@ -19,9 +19,7 @@ O jeito mais simples é o **comando de uma linha** que o console gera. Ele baixa
 A plataforma guarda só o hash do link. Se perder o comando, gere outro.
 :::
 
-:::info[Captura de tela]
-`static/img/edr/agente-linux/gerar-comando.png`: tela Instalação com o comando gerado.
-:::
+![Tela Implantação com o comando de instalação gerado](/img/edr/agente-linux/gerar-comando.png)
 
 ## 2. Rodar no servidor
 
@@ -56,9 +54,7 @@ sudo /opt/sensor-spl/bin/sensor-installer verify
 
 No console, o host aparece em **Dispositivos** como online.
 
-:::info[Captura de tela]
-`static/img/edr/agente-linux/dispositivo-online.png`: o novo host na lista de dispositivos.
-:::
+![Lista de dispositivos com os hosts online](/img/edr/agente-linux/dispositivo-online.png)
 
 ## O que fica no host
 

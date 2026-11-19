@@ -47,6 +47,4 @@ Um terminal no host, aberto pelo console, sem porta de entrada no endpoint.
 - Exige papel de resposta e MFA.
 - A sessão é autenticada e **gravada desde a primeira tecla**. A transcrição só aceita acréscimos.
 
-:::info[Captura de tela]
-`static/img/edr/resposta/live-response.png`: sessão de Live Response com a gravação ativa.
-:::
+![Sessão de Live Response gravada e auditada](/img/edr/resposta/live-response.png)
