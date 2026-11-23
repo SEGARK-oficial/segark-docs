@@ -140,6 +140,28 @@ monitoring:
       release: kube-prometheus-stack   # o rótulo que o seu Prometheus seleciona
 ```
 
+## Identidade AWS do servidor
+
+Só é preciso se você vai usar integrações AWS. O servidor precisa de uma identidade AWS que só pode assumir os papéis dos clientes; [AWS: dar acesso ao CentralOps](../integrations/aws-acesso.md#instalação-própria-a-identidade-do-servidor) mostra como criá-la. A API e todos os workers leem o Secret inteiro e usam a mesma identidade.
+
+- **No EKS, com IRSA ou EKS Pod Identity (recomendado):** crie uma ServiceAccount ligada ao papel do servidor e aponte o chart para ela. Nenhuma chave fica no cluster.
+
+  ```yaml
+  serviceAccount:
+    create: false
+    name: centralops-aws   # a ServiceAccount com a anotação eks.amazonaws.com/role-arn (IRSA)
+  ```
+
+- **Fora da AWS, com access key:** o Secret gerado pelo chart não tem campo para chaves AWS. Use `secrets.existingSecret` e acrescente ao seu Secret as chaves `AWS_ACCESS_KEY_ID` e `AWS_SECRET_ACCESS_KEY` (e, se quiser, `AWS_TRUST_PRINCIPAL_ARN`). Depois reinicie os pods, porque as variáveis só são lidas na partida:
+
+  ```bash
+  kubectl -n centralops patch secret <seu-secret> --type merge \
+    -p '{"stringData":{"AWS_ACCESS_KEY_ID":"AKIA...","AWS_SECRET_ACCESS_KEY":"..."}}'
+  kubectl -n centralops rollout restart deployment
+  ```
+
+Para conferir, abra uma integração AWS nova: o painel **Acesso por papel AWS** deve mostrar o ARN da identidade do servidor como principal.
+
 ## Recursos que o chart entrega
 
 - **API + frontend + workers Celery + beat** como Deployments separados (release

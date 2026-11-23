@@ -113,6 +113,20 @@ rota. Veja [Roteamento](../outputs/routing.md).
 | `KAFKA_PARKED_HOLD_SECONDS` | `30` | Intervalo entre tentativas de entregar um lote estacionado enquanto o destino segue fora. |
 | `KAFKA_PARKED_MAX_INFLIGHT` | `8` | Quantas partições do estacionamento drenam ao mesmo tempo. Um destino lento não segura a volta dos outros enquanto houver vaga. |
 
+## Identidade AWS do servidor
+
+Só para integrações AWS com o servidor fora da AWS. Dentro da AWS (EC2, EKS), o papel da máquina basta e estas variáveis ficam vazias. O passo a passo está em [AWS: dar acesso ao CentralOps](../integrations/aws-acesso.md#instalação-própria-a-identidade-do-servidor).
+
+| Variável | Padrão | Descrição |
+|---|---|---|
+| `AWS_ACCESS_KEY_ID` | *(vazio)* | Access key do usuário IAM do servidor. Esse usuário só precisa de `sts:AssumeRole` nos papéis dos clientes. |
+| `AWS_SECRET_ACCESS_KEY` | *(vazio)* | A chave secreta desse usuário. |
+| `AWS_TRUST_PRINCIPAL_ARN` | *(descoberto)* | O ARN que o painel mostra como principal do CentralOps e que entra no template do papel. Vazio = descoberto pela AWS. Preencha se o papel do servidor tem caminho (`role/caminho/Nome`). |
+
+:::caution[No Docker Compose, o `.env` não basta]
+Estas variáveis só chegam à API e aos workers com o `docker-compose.override.yml` descrito em [Credenciais AWS do servidor](./docker-compose.md#credenciais-aws-do-servidor).
+:::
+
 ## Boas práticas
 
 - **Fixe versões:** use uma tag imutável de imagem (ex.: `v1.0.0`) em produção, não `latest`.
