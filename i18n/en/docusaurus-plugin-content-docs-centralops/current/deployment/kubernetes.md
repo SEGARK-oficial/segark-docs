@@ -91,6 +91,28 @@ kubectl -n centralops create secret generic centralops-secrets \
 
 The complete variable reference is in **[Configuration](./configuration.md)**.
 
+## Server AWS identity {#identidade-aws-do-servidor}
+
+Only needed if you will use AWS integrations. The server needs an AWS identity that can only assume the customers' roles; [AWS: give CentralOps access](../integrations/aws-acesso.md#instalação-própria-a-identidade-do-servidor) shows how to create it. The API and all workers read the whole Secret and use the same identity.
+
+- **On EKS, with IRSA or EKS Pod Identity (recommended):** create a ServiceAccount bound to the server role and point the chart to it. No key stays in the cluster.
+
+  ```yaml
+  serviceAccount:
+    create: false
+    name: centralops-aws   # the ServiceAccount with the eks.amazonaws.com/role-arn annotation (IRSA)
+  ```
+
+- **Outside AWS, with an access key:** the chart-generated Secret has no field for AWS keys. Use `secrets.existingSecret` and add the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` keys (and, if you want, `AWS_TRUST_PRINCIPAL_ARN`) to your Secret. Then restart the pods, because the variables are only read at startup:
+
+  ```bash
+  kubectl -n centralops patch secret <your-secret> --type merge \
+    -p '{"stringData":{"AWS_ACCESS_KEY_ID":"AKIA...","AWS_SECRET_ACCESS_KEY":"..."}}'
+  kubectl -n centralops rollout restart deployment
+  ```
+
+To check, open a new AWS integration: the **AWS role access** panel should show the server identity's ARN as principal.
+
 ## What the chart delivers
 
 - **API + frontend + Celery workers + beat** as separate Deployments (release

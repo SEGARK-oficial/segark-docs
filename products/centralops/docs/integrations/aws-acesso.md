@@ -25,8 +25,9 @@ Você vai precisar de:
 
 - **Acesso de administrador à conta AWS**, ou pelo menos permissão para criar papéis no IAM e stacks no CloudFormation.
 - **Acesso de administrador no CentralOps**, para criar a integração.
-- **Os nomes do que vai ser lido:** o bucket do CloudTrail, o bucket ou log group do WAF, o log group do CloudWatch. Cada página de integração diz onde achar esses nomes.
+- **Os nomes do que vai ser lido, quando a integração usar:** o bucket do CloudTrail, o bucket ou log group do WAF, o log group do CloudWatch. Cada página de integração diz onde achar esses nomes.
 - **Se os logs são cifrados com uma chave KMS sua:** o ARN dessa chave.
+- **Em instalação própria:** a identidade AWS do servidor do CentralOps já configurada. Veja [Instalação própria](#instalação-própria-a-identidade-do-servidor).
 
 ## Passo 1: Pegar o External ID e o template no CentralOps
 
@@ -254,12 +255,59 @@ Uma conta suspensa, ou que sai da Organization, tem a filha desativada no sincro
 
 ## Instalação própria: a identidade do servidor
 
-Em instalação própria (*self-hosted*), o servidor do CentralOps precisa de uma identidade AWS para usar os papéis dos clientes. Ela vem da cadeia padrão da AWS: variáveis `AWS_ACCESS_KEY_ID` e `AWS_SECRET_ACCESS_KEY`, perfil de instância (EC2) ou IRSA (EKS).
+Em instalação própria (*self-hosted*), o servidor do CentralOps precisa de uma identidade AWS para usar os papéis dos clientes. É essa identidade que aparece como **principal do CentralOps** no painel e na trust policy de cada papel. Sem ela, o painel avisa **Identidade AWS do CentralOps não encontrada** e o teste de conexão falha.
 
-- Essa identidade só precisa da permissão `sts:AssumeRole` nos papéis dos clientes, por exemplo `arn:aws:iam::*:role/CentralOpsReadOnly`.
-- O painel descobre o ARN dela sozinho.
-- Se o papel do servidor tem caminho (`role/caminho/Nome`), defina `AWS_TRUST_PRINCIPAL_ARN` com o ARN completo.
-- Sem identidade, o painel avisa **Identidade AWS do CentralOps não encontrada**.
+A identidade só precisa de uma permissão: `sts:AssumeRole` nos papéis dos clientes. Ela não lê log nenhum sozinha. O acesso existe só nas contas onde alguém criou o papel confiando nela, e só com o External ID daquela organização.
+
+### Servidor dentro da AWS: papel da máquina
+
+Se o CentralOps roda numa EC2 ou num EKS, use o papel da própria máquina e não crie chave:
+
+- **EC2:** anexe à instância um *instance profile* com a policy abaixo.
+- **EKS:** use IRSA ou EKS Pod Identity numa ServiceAccount sua. No chart, aponte para ela com `serviceAccount.create=false` e `serviceAccount.name=<nome-da-serviceaccount>`.
+
+O CentralOps encontra essa identidade pela cadeia padrão da AWS e mostra o ARN do papel no painel.
+
+### Servidor fora da AWS: usuário IAM com access key
+
+1. Numa conta AWS sua, abra **IAM -> Users -> Create user**. Dê um nome como `centralops-server` e **não** marque acesso ao console.
+2. Em **Permissions options**, escolha **Attach policies directly** e clique em **Next** sem marcar nada. Depois clique em **Create user**.
+3. Abra o usuário, vá em **Add permissions -> Create inline policy**, escolha **JSON** e cole a policy abaixo. Dê um nome como `AssumirPapeisCentralOps`.
+4. Na aba **Security credentials**, clique em **Create access key**, escolha **Application running outside AWS** e guarde o **Access key ID** e a **Secret access key** num cofre. A chave secreta só aparece uma vez.
+5. Anote o ARN do usuário, no topo da página (exemplo: `arn:aws:iam::999999999999:user/centralops-server`).
+
+Policy da identidade do servidor, nos dois casos:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AssumirOsPapeisDosClientes",
+      "Effect": "Allow",
+      "Action": "sts:AssumeRole",
+      "Resource": "arn:aws:iam::*:role/CentralOpsReadOnly"
+    }
+  ]
+}
+```
+
+Se você mudou o `RoleName` no template, troque `CentralOpsReadOnly` pelo nome usado.
+
+### Entregar a identidade ao servidor
+
+As variáveis precisam chegar ao processo da API (painel e teste de conexão) e aos workers de coleta. Um processo sem elas não assume os papéis.
+
+| Variável | Valor |
+|---|---|
+| `AWS_ACCESS_KEY_ID` | o Access key ID do usuário (só fora da AWS) |
+| `AWS_SECRET_ACCESS_KEY` | a Secret access key do usuário (só fora da AWS) |
+| `AWS_TRUST_PRINCIPAL_ARN` | opcional: o ARN que o painel mostra como principal. Obrigatório se o papel do servidor tem caminho (`role/caminho/Nome`), que a AWS não devolve. |
+
+- **Docker Compose:** pôr as variáveis no `compose/.env` não basta. Veja [Credenciais AWS do servidor](../deployment/docker-compose.md#credenciais-aws-do-servidor).
+- **Kubernetes (Helm):** acrescente as chaves ao Secret de `secrets.existingSecret`. Veja [Identidade AWS do servidor](../deployment/kubernetes.md#identidade-aws-do-servidor).
+
+Para conferir, abra uma integração AWS nova: o painel **Acesso por papel AWS** deve mostrar o ARN do usuário ou do papel do servidor como principal.
 
 ## Access key (legado)
 

@@ -102,6 +102,56 @@ With everything `healthy`, head over to
 **[First Login](/centralops/getting-started/first-login)** to create the administrator
 account.
 
+## Server AWS credentials {#credenciais-aws-do-servidor}
+
+Only needed if you will use AWS integrations and the server runs outside AWS (how to create the user is in [AWS: give CentralOps access](../integrations/aws-acesso.md#instalação-própria-a-identidade-do-servidor)).
+
+The `AWS_*` variables **do not reach the containers** just by being in `compose/.env`. Compose uses that file to fill in its own YAML, and the services do not declare these variables. Without them, the **AWS role access** panel warns **CentralOps AWS identity not found**.
+
+1. Add the credentials to `compose/.env`:
+
+   ```dotenv
+   AWS_ACCESS_KEY_ID=AKIA...
+   AWS_SECRET_ACCESS_KEY=...
+   # optional: the ARN the panel shows as principal
+   AWS_TRUST_PRINCIPAL_ARN=
+   ```
+
+2. Create the file `compose/docker-compose.override.yml`, next to `docker-compose.yml`. It hands the variables to the API and the collection workers:
+
+   ```yaml
+   x-aws-env: &aws-env
+     AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-}
+     AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-}
+     AWS_TRUST_PRINCIPAL_ARN: ${AWS_TRUST_PRINCIPAL_ARN:-}
+
+   services:
+     centralops:
+       environment: *aws-env
+     collector-worker-priority:
+       environment: *aws-env
+     collector-worker-bulk:
+       environment: *aws-env
+     collector-worker-maintenance:
+       environment: *aws-env
+     collector-worker-query:
+       environment: *aws-env
+   ```
+
+3. Recreate the services, including the override:
+
+   ```bash
+   docker compose -f compose/docker-compose.yml -f compose/docker-compose.override.yml up -d
+   ```
+
+4. Open a new AWS integration: the panel should show the user's ARN as principal.
+
+:::warning[The override only counts if it is in the command]
+
+Compose loads `docker-compose.override.yml` on its own only when you run from inside `compose/` without `-f`. The commands on this page use `-f compose/docker-compose.yml`, which leaves the override out: an `up -d` like that recreates the containers **without** the credentials, and AWS collection stops. Add `-f compose/docker-compose.override.yml` to every command, or make the file permanent with `COMPOSE_FILE=docker-compose.yml:docker-compose.override.yml` in `compose/.env` (on the Enterprise edition, `docker-compose.yml:docker-compose.ee.yml:docker-compose.override.yml`) and run from inside `compose/`, without `-f`.
+
+:::
+
 ## Run prebuilt images (no build)
 
 The official images are published to the GitHub Container Registry on every release:

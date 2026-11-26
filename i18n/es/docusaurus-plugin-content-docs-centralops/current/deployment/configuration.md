@@ -69,6 +69,20 @@ Las credenciales de cada integración se cifran en reposo. El proveedor de cifra
 **`local_fernet`** (AES derivado de la `APP_MASTER_KEY`). Detalles y rotación en
 **[Secretos y clave maestra](/centralops/administration/secrets-and-master-key)**.
 
+## Identidad AWS del servidor {#identidade-aws-do-servidor}
+
+Solo para integraciones AWS con el servidor fuera de AWS. Dentro de AWS (EC2, EKS), el rol de la máquina basta y estas variables quedan vacías. El paso a paso está en [AWS: dar acceso a CentralOps](../integrations/aws-acesso.md#instalação-própria-a-identidade-do-servidor).
+
+| Variable | Valor por defecto | Descripción |
+|---|---|---|
+| `AWS_ACCESS_KEY_ID` | *(vacío)* | Access key del usuario IAM del servidor. Ese usuario solo necesita `sts:AssumeRole` en los roles de los clientes. |
+| `AWS_SECRET_ACCESS_KEY` | *(vacío)* | La clave secreta de ese usuario. |
+| `AWS_TRUST_PRINCIPAL_ARN` | *(descubierto)* | El ARN que el panel muestra como principal de CentralOps y que entra en la plantilla del rol. Vacío = descubierto desde AWS. Complétalo si el rol del servidor tiene ruta (`role/ruta/Nombre`). |
+
+:::caution[En Docker Compose, el `.env` no basta]
+Estas variables solo llegan a la API y a los workers con el `docker-compose.override.yml` descrito en [Credenciales AWS del servidor](./docker-compose.md#credenciais-aws-do-servidor).
+:::
+
 ## Buenas prácticas
 
 - **Fija las versiones:** usa una etiqueta inmutable de imagen (ej.: `v1.0.0`) en producción, no `latest`.

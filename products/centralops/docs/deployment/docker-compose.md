@@ -118,6 +118,56 @@ DATABASE_MIGRATION_URL=postgresql+psycopg2://centralops:<senha>@postgres:5432/ce
 
 A aplicação passa a falar com o PgBouncer, e a migração de boot continua indo direto ao Postgres. A senha não pode depender de URL-encoding.
 
+## Credenciais AWS do servidor
+
+Só é preciso se você vai usar integrações AWS e o servidor roda fora da AWS (como criar o usuário está em [AWS: dar acesso ao CentralOps](../integrations/aws-acesso.md#instalação-própria-a-identidade-do-servidor)).
+
+As variáveis `AWS_*` **não chegam aos containers** só por estarem no `compose/.env`. O compose usa esse arquivo para preencher o próprio YAML, e os serviços não declaram essas variáveis. Sem elas, o painel **Acesso por papel AWS** avisa **Identidade AWS do CentralOps não encontrada**.
+
+1. Acrescente as credenciais ao `compose/.env`:
+
+   ```dotenv
+   AWS_ACCESS_KEY_ID=AKIA...
+   AWS_SECRET_ACCESS_KEY=...
+   # opcional: o ARN que o painel mostra como principal
+   AWS_TRUST_PRINCIPAL_ARN=
+   ```
+
+2. Crie o arquivo `compose/docker-compose.override.yml`, ao lado do `docker-compose.yml`. Ele entrega as variáveis à API e aos workers de coleta:
+
+   ```yaml
+   x-aws-env: &aws-env
+     AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-}
+     AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-}
+     AWS_TRUST_PRINCIPAL_ARN: ${AWS_TRUST_PRINCIPAL_ARN:-}
+
+   services:
+     centralops:
+       environment: *aws-env
+     collector-worker-priority:
+       environment: *aws-env
+     collector-worker-bulk:
+       environment: *aws-env
+     collector-worker-maintenance:
+       environment: *aws-env
+     collector-worker-query:
+       environment: *aws-env
+   ```
+
+3. Recrie os serviços, incluindo o override:
+
+   ```bash
+   docker compose -f compose/docker-compose.yml -f compose/docker-compose.override.yml up -d
+   ```
+
+4. Abra uma integração AWS nova: o painel deve mostrar o ARN do usuário como principal.
+
+:::warning[O override só vale se entrar no comando]
+
+O compose só carrega o `docker-compose.override.yml` sozinho quando você roda de dentro de `compose/` sem `-f`. Os comandos desta página usam `-f compose/docker-compose.yml`, e aí o override fica de fora: um `up -d` assim recria os containers **sem** as credenciais, e a coleta AWS para. Inclua `-f compose/docker-compose.override.yml` em todo comando, ou torne o arquivo permanente com `COMPOSE_FILE=docker-compose.yml:docker-compose.override.yml` no `compose/.env` (na edição Enterprise, `docker-compose.yml:docker-compose.ee.yml:docker-compose.override.yml`) e rode de dentro de `compose/`, sem `-f`.
+
+:::
+
 ## Rodar imagens prontas (sem build)
 
 As imagens oficiais são publicadas no GitHub Container Registry a cada release:

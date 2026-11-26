@@ -68,6 +68,20 @@ The credentials for each integration are encrypted at rest. The default cipher p
 **`local_fernet`** (AES derived from `APP_MASTER_KEY`). Details and rotation in
 **[Secrets and master key](/centralops/administration/secrets-and-master-key)**.
 
+## Server AWS identity {#identidade-aws-do-servidor}
+
+Only for AWS integrations with the server outside AWS. On AWS (EC2, EKS), the machine's role is enough and these variables stay empty. The step by step is in [AWS: give CentralOps access](../integrations/aws-acesso.md#instalação-própria-a-identidade-do-servidor).
+
+| Variable | Default | Description |
+|---|---|---|
+| `AWS_ACCESS_KEY_ID` | *(empty)* | Access key of the server's IAM user. That user only needs `sts:AssumeRole` on the customers' roles. |
+| `AWS_SECRET_ACCESS_KEY` | *(empty)* | That user's secret key. |
+| `AWS_TRUST_PRINCIPAL_ARN` | *(discovered)* | The ARN the panel shows as the CentralOps principal, which goes into the role template. Empty = discovered from AWS. Set it if the server's role has a path (`role/path/Name`). |
+
+:::caution[On Docker Compose, `.env` is not enough]
+These variables only reach the API and the workers with the `docker-compose.override.yml` described in [Server AWS credentials](./docker-compose.md#credenciais-aws-do-servidor).
+:::
+
 ## Best practices
 
 - **Pin versions:** use an immutable image tag (e.g. `v1.0.0`) in production, not `latest`.
